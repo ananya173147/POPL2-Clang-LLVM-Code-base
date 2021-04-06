@@ -52,7 +52,7 @@ There are three phases in Clang compilation:
 
 
 ### Class hierarchy
-
+Clang’s AST nodes are modeled on a class hierarchy that does not have a common ancestor. Instead, there are multiple larger hierarchies for basic node types like Decl and Stmt. Many important AST nodes derive from Type, Decl, DeclContext or Stmt, with some classes deriving from both Decl and DeclContext.
 The following link contains the class hierarchy from [LLVM doxygen documentation](https://llvm.org/doxygen/) which is a useful source of information about the LLVM source base - [https://llvm.org/doxygen/inherits.html](https://llvm.org/doxygen/inherits.html)
 
 
@@ -91,8 +91,8 @@ The following design patterns are incorporated into Clang/LLVM source code:
 *   `begin()` function (or method) returns an iterator to the start of the sequence, the `end()` function returns an iterator pointing to one past the last valid element of the sequence and there is some `iterator` data type that is common between the two operations.
 *   User::op_iterator - iterates through operands
 *   inst_iterator - goes through instructions in a function 
-*   for(inst_iterator i=inst_begin(f);i!=inst_end(f);i++) 
-*    Declared in &lt;Transforms/Utils/FunctionUtils.h>
+     * for(inst_iterator i=inst_begin(f);i!=inst_end(f);i++) 
+     *  Declared in &lt;Transforms/Utils/FunctionUtils.h>
 *   Most iterators automatically cast to a pointer to the object type (except inst_iterator)
 
 ### References:
@@ -104,3 +104,4 @@ The following design patterns are incorporated into Clang/LLVM source code:
 *   [https://en.wikipedia.org/wiki/Design_Patterns](https://en.wikipedia.org/wiki/Design_Patterns)
 *   [https://llvm.org/docs/ProgrammersManual.html#basic-inspection-and-traversal-routines](https://llvm.org/docs/ProgrammersManual.html#basic-inspection-and-traversal-routines)
 *   [http://www.cs.cmu.edu/afs/cs/academic/class/15745-s12/public/lectures/L6-LLVM-Part2.pdf](http://www.cs.cmu.edu/afs/cs/academic/class/15745-s12/public/lectures/L6-LLVM-Part2.pdf)
+*   [https://clang.llvm.org/docs/IntroductionToTheClangAST.html](https://clang.llvm.org/docs/IntroductionToTheClangAST.html)
